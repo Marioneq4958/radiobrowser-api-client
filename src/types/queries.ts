@@ -41,3 +41,44 @@ export interface ISearchStation {
   limit?: number;
   hideBroken?: boolean;
 }
+
+export interface ICountries {
+  order?: 'name' | 'stationcount';
+  reverse?: boolean;
+  hideBroken?: boolean;
+  offset?: number;
+  limit?: number;
+}
+
+export interface ICodecs {
+  order?: 'name' | 'stationcount';
+  reverse?: boolean;
+  hideBroken?: boolean;
+  offset?: number;
+  limit?: number;
+}
+
+export interface IStates {
+  order?: 'name' | 'stationcount';
+  reverse?: boolean;
+  hideBroken?: boolean;
+  countryName?: string;
+  offset?: number;
+  limit?: number;
+}
+
+export interface ILanguages {
+  order?: 'name' | 'stationcount';
+  reverse?: boolean;
+  hideBroken?: boolean;
+  offset?: number;
+  limit?: number;
+}
+
+export interface ITags {
+  order?: 'name' | 'stationcount';
+  reverse?: boolean;
+  hideBroken?: boolean;
+  offset?: number;
+  limit?: number;
+}
