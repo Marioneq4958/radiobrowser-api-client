@@ -1,7 +1,7 @@
 import { Axios } from 'axios';
-import { Station } from './types/data';
-import { ISearchStation } from './types/queries';
-import { StationsListOutputFormat } from './types/formats';
+import { Codec, Country, Language, State, Station, Tag } from './types/data';
+import { ICodecs, ICountries, ILanguages, ISearchStation, IStates, ITags } from './types/queries';
+import { ListOutputFormat, StationsListOutputFormat } from './types/formats';
 import { JsonSerializer } from 'typescript-json-serializer';
 
 export class RadioBrowserClient {
@@ -64,5 +64,85 @@ export class RadioBrowserClient {
   public async searchStations(params: ISearchStation): Promise<Station[]> {
     const data = await this.fetchStations(params);
     return JSON.parse(data).map((station: any) => new JsonSerializer().deserialize(station, Station));
+  }
+
+  public async fetchCountries(params: ICountries, query: string = '', outputFormat: ListOutputFormat = 'json'): Promise<string> {
+    const { data } = await this.sendRequest<string>(`countries/${query}`, outputFormat, {
+      order: params.order,
+      reverse: params.reverse,
+      hidebroken: params.hideBroken,
+      offset: params.offset,
+      limit: params.limit,
+    });
+    return data;
+  }
+
+  public async getCountries(params: ICountries, query: string = '') {
+    const data = await this.fetchCountries(params, query);
+    return JSON.parse(data).map((country: any) => new JsonSerializer().deserialize(country, Country));
+  }
+
+  public async fetchCodecs(params: ICodecs, query: string = '', outputFormat: ListOutputFormat = 'json'): Promise<string> {
+    const { data } = await this.sendRequest<string>(`codecs/${query}`, outputFormat, {
+      order: params.order,
+      reverse: params.reverse,
+      hidebroken: params.hideBroken,
+      offset: params.offset,
+      limit: params.limit,
+    });
+    return data;
+  }
+
+  public async getCodecs(params: ICodecs, query: string = '') {
+    const data = await this.fetchCodecs(params, query);
+    return JSON.parse(data).map((codec: any) => new JsonSerializer().deserialize(codec, Codec));
+  }
+
+  public async fetchStates(params: IStates, query: string = '', outputFormat: ListOutputFormat = 'json'): Promise<string> {
+    const { data } = await this.sendRequest<string>(`states/${query}`, outputFormat, {
+      order: params.order,
+      reverse: params.reverse,
+      hidebroken: params.hideBroken,
+      offset: params.offset,
+      limit: params.limit,
+    });
+    return data;
+  }
+
+  public async getStates(params: IStates, query: string = '') {
+    const data = await this.fetchStates(params, query);
+    return JSON.parse(data).map((state: any) => new JsonSerializer().deserialize(state, State));
+  }
+
+  public async fetchLanguages(params: ILanguages, query: string = '', outputFormat: ListOutputFormat = 'json'): Promise<string> {
+    const { data } = await this.sendRequest<string>(`languages/${query}`, outputFormat, {
+      order: params.order,
+      reverse: params.reverse,
+      hidebroken: params.hideBroken,
+      offset: params.offset,
+      limit: params.limit,
+    });
+    return data;
+  }
+
+  public async getLanguages(params: ILanguages, query: string = '') {
+    const data = await this.fetchLanguages(params, query);
+    return JSON.parse(data).map((language: any) => new JsonSerializer().deserialize(language, Language));
+  }
+
+  public async fetchTags(params: ITags, query: string = '', outputFormat: ListOutputFormat = 'json'): Promise<string> {
+    const { data } = await this.sendRequest<string>(`tags/${query}`, outputFormat, {
+      order: params.order,
+      reverse: params.reverse,
+      hidebroken: params.hideBroken,
+      offset: params.offset,
+      limit: params.limit,
+    });
+    return data;
+  }
+
+  public async getTags(params: ITags, query: string = '') {
+    const data = await this.fetchTags(params, query);
+    return JSON.parse(data).map((tag: any) => new JsonSerializer().deserialize(tag, Tag));
   }
 }

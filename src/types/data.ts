@@ -86,3 +86,57 @@ export class Station {
   @JsonProperty({ name: 'has_extended_info' })
   public hasExtendedInfo: boolean | null;
 }
+
+@JsonObject()
+export class Country {
+  @JsonProperty()
+  public name: string;
+
+  @JsonProperty({ name: 'iso_3166_1' })
+  public code: string;
+
+  @JsonProperty({ name: 'stationcount' })
+  public stationCount: number;
+}
+
+@JsonObject()
+export class Codec {
+  @JsonProperty()
+  public name: string;
+
+  @JsonProperty({ name: 'stationcount' })
+  public stationCount: number;
+}
+
+@JsonObject()
+export class State {
+  @JsonProperty()
+  public name: string;
+
+  @JsonProperty({ name: 'country' })
+  public countryName: string;
+
+  @JsonProperty({ name: 'stationcount' })
+  public stationCount: number;
+}
+
+@JsonObject()
+export class Language {
+  @JsonProperty()
+  public name: string;
+
+  @JsonProperty({ name: 'iso_639' })
+  public code: string | null;
+
+  @JsonProperty({ name: 'stationcount' })
+  public stationCount: number;
+}
+
+@JsonObject()
+export class Tag {
+  @JsonProperty()
+  public name: string;
+
+  @JsonProperty({ name: 'stationcount' })
+  public stationCount: number;
+}
