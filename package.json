@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint:fix": "eslint src/**/*.ts --fix",
-    "lint": "eslint src/**/*.ts",
+    "test": "jest",
+    "lint:fix": "eslint src/**/*.ts tests/**/*.ts --fix",
+    "lint": "eslint src/**/*.ts tests/**/*.ts",
     "build": "tsc"
   },
   "keywords": [],
@@ -24,5 +24,8 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3",
     "typescript-json-serializer": "^6.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
