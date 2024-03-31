@@ -1,16 +1,42 @@
 import { Axios } from 'axios';
-import { Codec, Country, Language, State, Station, Tag } from './types/data';
-import { ICodecs, ICountries, ILanguages, ISearchStation, IStates, ITags } from './types/queries';
-import { ListOutputFormat, StationsListOutputFormat } from './types/formats';
+import {
+  Codec,
+  Country,
+  Language,
+  ServerConfig,
+  ServerStats,
+  State,
+  Station,
+  StationCheck,
+  StationCheckStep,
+  StationClick,
+  StationOldVersion,
+  Tag,
+} from './types/data';
+import {
+  ICodecs,
+  ICountries,
+  ILanguages,
+  ISearchStation,
+  IStates,
+  IStationChecks,
+  IStationCheckSteps,
+  IStationClicks,
+  IStationOldVersion,
+  ITags,
+} from './types/queries';
+import { ListOutputFormat, ObjectOutputFromat, StationsListOutputFormat } from './types/formats';
 import { JsonSerializer } from 'typescript-json-serializer';
 
 export class RadioBrowserClient {
   private readonly axios: Axios;
+  private readonly jsonSerializer: JsonSerializer;
 
   constructor(appName: string, appVersion: string) {
     this.axios = new Axios({
       headers: { 'User-Agent': `${appName}/${appVersion}` },
     });
+    this.jsonSerializer = new JsonSerializer();
   }
 
   private async getServers() {
@@ -33,116 +59,148 @@ export class RadioBrowserClient {
   }
 
   public async fetchStations(params: ISearchStation, outputFormat: StationsListOutputFormat = 'json'): Promise<string> {
-    const { data } = await this.sendRequest<string>('stations/search', outputFormat, {
-      name: params.name,
-      nameExtact: params.nameExtact,
-      country: params.country,
-      countryExact: params.countryExact,
-      countrycode: params.countryCode,
-      state: params.state,
-      stateExact: params.stateExact,
-      language: params.language,
-      languageExact: params.languageExact,
-      tag: params.tag,
-      tagEaxct: params.tagEaxct,
-      tagList: params.tagList?.join(','),
-      codec: params.codec,
-      bitrateMin: params.bitrateMin,
-      bitrateMax: params.bitrateMax,
-      has_geo_info: params.hasGeoInfo,
-      has_extended_info: params.hasExtenedInfo,
-      is_https: params.isHttps,
-      order: params.order,
-      reverse: params.reverse,
-      offset: params.offset,
-      limit: params.limit,
-      hidebroken: params.hideBroken,
-    });
+    const { data } = await this.sendRequest<string>('stations/search', outputFormat, this.jsonSerializer.serialize(new ISearchStation(params)));
     return data;
   }
 
   public async searchStations(params: ISearchStation): Promise<Station[]> {
     const data = await this.fetchStations(params);
-    return JSON.parse(data).map((station: any) => new JsonSerializer().deserialize(station, Station));
+    return this.jsonSerializer.deserialize(JSON.parse(data), Station) as Station[];
+  }
+
+  public async fetchStationsByUUIDs(params: { stationUUIDs: string[] }, outputFormat: StationsListOutputFormat = 'json'): Promise<string> {
+    const { data } = await this.sendRequest<string>('stations/byuuid', outputFormat, { uuids: params.stationUUIDs.join(',') });
+    return data;
+  }
+
+  public async getStationsByUUIDs(params: { stationUUIDs: string[] }): Promise<Station[]> {
+    const data = await this.fetchStationsByUUIDs(params);
+    return this.jsonSerializer.deserialize(JSON.parse(data), Station) as Station[];
   }
 
   public async fetchCountries(params: ICountries, query: string = '', outputFormat: ListOutputFormat = 'json'): Promise<string> {
-    const { data } = await this.sendRequest<string>(`countries/${query}`, outputFormat, {
-      order: params.order,
-      reverse: params.reverse,
-      hidebroken: params.hideBroken,
-      offset: params.offset,
-      limit: params.limit,
-    });
+    const { data } = await this.sendRequest<string>(`countries/${query}`, outputFormat, this.jsonSerializer.serialize(new ICountries(params)));
     return data;
   }
 
-  public async getCountries(params: ICountries, query: string = '') {
+  public async getCountries(params: ICountries, query: string = ''): Promise<Country[]> {
     const data = await this.fetchCountries(params, query);
-    return JSON.parse(data).map((country: any) => new JsonSerializer().deserialize(country, Country));
+    return this.jsonSerializer.deserialize(JSON.parse(data), Country) as Country[];
   }
 
   public async fetchCodecs(params: ICodecs, query: string = '', outputFormat: ListOutputFormat = 'json'): Promise<string> {
-    const { data } = await this.sendRequest<string>(`codecs/${query}`, outputFormat, {
-      order: params.order,
-      reverse: params.reverse,
-      hidebroken: params.hideBroken,
-      offset: params.offset,
-      limit: params.limit,
-    });
+    const { data } = await this.sendRequest<string>(`codecs/${query}`, outputFormat, this.jsonSerializer.serialize(new ICodecs(params)));
     return data;
   }
 
-  public async getCodecs(params: ICodecs, query: string = '') {
+  public async getCodecs(params: ICodecs, query: string = ''): Promise<Codec[]> {
     const data = await this.fetchCodecs(params, query);
-    return JSON.parse(data).map((codec: any) => new JsonSerializer().deserialize(codec, Codec));
+    return this.jsonSerializer.deserialize(JSON.parse(data), Codec) as Codec[];
   }
 
   public async fetchStates(params: IStates, query: string = '', outputFormat: ListOutputFormat = 'json'): Promise<string> {
-    const { data } = await this.sendRequest<string>(`states/${query}`, outputFormat, {
-      order: params.order,
-      reverse: params.reverse,
-      hidebroken: params.hideBroken,
-      offset: params.offset,
-      limit: params.limit,
-    });
+    const { data } = await this.sendRequest<string>(`states/${query}`, outputFormat, this.jsonSerializer.serialize(new IStates(params)));
     return data;
   }
 
-  public async getStates(params: IStates, query: string = '') {
+  public async getStates(params: IStates, query: string = ''): Promise<State[]> {
     const data = await this.fetchStates(params, query);
-    return JSON.parse(data).map((state: any) => new JsonSerializer().deserialize(state, State));
+    return this.jsonSerializer.deserialize(JSON.parse(data), State) as State[];
   }
 
   public async fetchLanguages(params: ILanguages, query: string = '', outputFormat: ListOutputFormat = 'json'): Promise<string> {
-    const { data } = await this.sendRequest<string>(`languages/${query}`, outputFormat, {
-      order: params.order,
-      reverse: params.reverse,
-      hidebroken: params.hideBroken,
-      offset: params.offset,
-      limit: params.limit,
-    });
+    const { data } = await this.sendRequest<string>(`languages/${query}`, outputFormat, this.jsonSerializer.serialize(new ILanguages(params)));
     return data;
   }
 
-  public async getLanguages(params: ILanguages, query: string = '') {
+  public async getLanguages(params: ILanguages, query: string = ''): Promise<Language[]> {
     const data = await this.fetchLanguages(params, query);
-    return JSON.parse(data).map((language: any) => new JsonSerializer().deserialize(language, Language));
+    return this.jsonSerializer.deserialize(JSON.parse(data), Language) as Language[];
   }
 
   public async fetchTags(params: ITags, query: string = '', outputFormat: ListOutputFormat = 'json'): Promise<string> {
-    const { data } = await this.sendRequest<string>(`tags/${query}`, outputFormat, {
-      order: params.order,
-      reverse: params.reverse,
-      hidebroken: params.hideBroken,
-      offset: params.offset,
-      limit: params.limit,
-    });
+    const { data } = await this.sendRequest<string>(`tags/${query}`, outputFormat, this.jsonSerializer.serialize(new ITags(params)));
     return data;
   }
 
-  public async getTags(params: ITags, query: string = '') {
+  public async getTags(params: ITags, query: string = ''): Promise<Tag[]> {
     const data = await this.fetchTags(params, query);
-    return JSON.parse(data).map((tag: any) => new JsonSerializer().deserialize(tag, Tag));
+    return this.jsonSerializer.deserialize(JSON.parse(data), Tag) as Tag[];
+  }
+
+  public async fetchStationChecks(params: IStationChecks, outputFormat: ListOutputFormat = 'json'): Promise<string> {
+    const { data } = await this.sendRequest<string>('checks', outputFormat, this.jsonSerializer.serialize(new IStationChecks(params)));
+    return data;
+  }
+
+  public async getStationChecks(params: IStationChecks): Promise<StationCheck[]> {
+    const data = await this.fetchStationChecks(params);
+    return this.jsonSerializer.deserialize(JSON.parse(data), StationCheck) as StationCheck[];
+  }
+
+  public async fetchStationClicks(params: IStationClicks, outputFormat: ListOutputFormat = 'json'): Promise<string> {
+    const { data } = await this.sendRequest<string>('clicks', outputFormat, this.jsonSerializer.serialize(new IStationClicks(params)));
+    return data;
+  }
+
+  public async getStationClicks(params: IStationClicks): Promise<StationClick[]> {
+    const data = await this.fetchStationClicks(params);
+    return this.jsonSerializer.deserialize(JSON.parse(data), StationClick) as StationClick[];
+  }
+
+  public async fetchStationCheckSteps(params: IStationCheckSteps, outputFormat: ListOutputFormat = 'json'): Promise<string> {
+    const { data } = await this.sendRequest<string>('checksteps', outputFormat, this.jsonSerializer.serialize(new IStationCheckSteps(params)));
+    return data;
+  }
+
+  public async getStationCheckSteps(params: IStationCheckSteps): Promise<StationCheckStep[]> {
+    const data = await this.fetchStationCheckSteps(params);
+    return this.jsonSerializer.deserialize(JSON.parse(data), StationCheckStep) as StationCheckStep[];
+  }
+
+  public async fetchStationOldVersion(
+    params: IStationOldVersion,
+    stationUUID: string = '',
+    outputFormat: ListOutputFormat = 'json',
+  ): Promise<string> {
+    const { data } = await this.sendRequest<string>(
+      stationUUID !== '' ? `stations/changed/${stationUUID}` : 'stations/changed',
+      outputFormat,
+      this.jsonSerializer.serialize(new IStationOldVersion(params)),
+    );
+    return data;
+  }
+
+  public async getStationOldVersion(params: IStationOldVersion, stationUUID: string = ''): Promise<StationOldVersion[]> {
+    const data = await this.fetchStationOldVersion(params, stationUUID);
+    return this.jsonSerializer.deserialize(JSON.parse(data), StationOldVersion) as StationOldVersion[];
+  }
+
+  public async fetchServerStats(outputFormat: ObjectOutputFromat = 'json'): Promise<string> {
+    const { data } = await this.sendRequest<string>('stats', outputFormat, {});
+    return data;
+  }
+
+  public async getServerStats(): Promise<ServerStats> {
+    const data = await this.fetchServerStats();
+    return this.jsonSerializer.deserialize(JSON.parse(data), ServerStats) as ServerStats;
+  }
+
+  public async fetchServerConfig(outputFormat: ObjectOutputFromat = 'json'): Promise<string> {
+    const { data } = await this.sendRequest<string>('config', outputFormat, {});
+    return data;
+  }
+
+  public async getServerConfig(): Promise<ServerConfig> {
+    const data = await this.fetchServerConfig();
+    return this.jsonSerializer.deserialize(JSON.parse(data), ServerConfig) as ServerConfig;
+  }
+
+  public async voteForStation(stationUUID: string): Promise<void> {
+    await this.sendRequest<string>(`vote/${stationUUID}`, 'json', {});
+  }
+
+  public async click(stationUUID: string): Promise<void> {
+    await this.sendRequest<string>(`url/${stationUUID}`, 'json', {});
   }
 }
