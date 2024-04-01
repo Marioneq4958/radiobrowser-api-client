@@ -1,0 +1,102 @@
+[
+  {
+    "name": " California",
+    "countryName": "The United States Of America",
+    "stationCount": 1
+  },
+  {
+    "name": " Campania",
+    "countryName": "Italy",
+    "stationCount": 1
+  },
+  {
+    "name": " Ontario",
+    "countryName": "Canada",
+    "stationCount": 22
+  },
+  {
+    "name": " Una-Sana Canton",
+    "countryName": "Bosnia And Herzegovina",
+    "stationCount": 1
+  },
+  {
+    "name": " Zürich",
+    "countryName": "Switzerland",
+    "stationCount": 2
+  },
+  {
+    "name": "-",
+    "countryName": "Sweden",
+    "stationCount": 1
+  },
+  {
+    "name": "-",
+    "countryName": "The Netherlands",
+    "stationCount": 1
+  },
+  {
+    "name": "- guadeloupe",
+    "countryName": "France",
+    "stationCount": 1
+  },
+  {
+    "name": "- None -",
+    "countryName": "Norway",
+    "stationCount": 1
+  },
+  {
+    "name": "—",
+    "countryName": "",
+    "stationCount": 1
+  },
+  {
+    "name": "—Occitanie",
+    "countryName": "France",
+    "stationCount": 2
+  },
+  {
+    "name": "128kbps",
+    "countryName": "",
+    "stationCount": 1
+  },
+  {
+    "name": "128kbps",
+    "countryName": "United Republic Of Tanzania",
+    "stationCount": 1
+  },
+  {
+    "name": "2=1 потоков ",
+    "countryName": "The Russian Federation",
+    "stationCount": 1
+  },
+  {
+    "name": "64 kbps, Saxony, Ore Mountains",
+    "countryName": "Germany",
+    "stationCount": 1
+  },
+  {
+    "name": "74 - Haute-Savoie (France)",
+    "countryName": "France",
+    "stationCount": 1
+  },
+  {
+    "name": "A Coruña",
+    "countryName": "Spain",
+    "stationCount": 7
+  },
+  {
+    "name": "A.P.",
+    "countryName": "",
+    "stationCount": 1
+  },
+  {
+    "name": "AAC",
+    "countryName": "The United Kingdom Of Great Britain And Northern Ireland",
+    "stationCount": 1
+  },
+  {
+    "name": "AAC 320kbits",
+    "countryName": "Canada",
+    "stationCount": 1
+  }
+]

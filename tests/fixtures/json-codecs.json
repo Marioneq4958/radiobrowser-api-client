@@ -1,0 +1,34 @@
+[
+  {
+    "name": "AAC",
+    "stationcount": 5133
+  },
+  {
+    "name": "AAC+",
+    "stationcount": 7910
+  },
+  {
+    "name": "AAC+,H.264",
+    "stationcount": 5
+  },
+  {
+    "name": "AAC,H.264",
+    "stationcount": 111
+  },
+  {
+    "name": "FLV",
+    "stationcount": 15
+  },
+  {
+    "name": "MP3",
+    "stationcount": 32199
+  },
+  {
+    "name": "OGG",
+    "stationcount": 498
+  },
+  {
+    "name": "UNKNOWN",
+    "stationcount": 1600
+  }
+]

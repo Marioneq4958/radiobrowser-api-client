@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Andorra",
+    "code": "AD",
+    "stationCount": 12
+  },
+  {
+    "name": "The United Arab Emirates",
+    "code": "AE",
+    "stationCount": 520
+  },
+  {
+    "name": "Afghanistan",
+    "code": "AF",
+    "stationCount": 175
+  },
+  {
+    "name": "Antigua And Barbuda",
+    "code": "AG",
+    "stationCount": 8
+  },
+  {
+    "name": "Anguilla",
+    "code": "AI",
+    "stationCount": 4
+  },
+  {
+    "name": "Albania",
+    "code": "AL",
+    "stationCount": 47
+  },
+  {
+    "name": "Armenia",
+    "code": "AM",
+    "stationCount": 13
+  },
+  {
+    "name": "",
+    "code": "AN",
+    "stationCount": 3
+  },
+  {
+    "name": "Angola",
+    "code": "AO",
+    "stationCount": 18
+  },
+  {
+    "name": "Antarctica",
+    "code": "AQ",
+    "stationCount": 7
+  },
+  {
+    "name": "Argentina",
+    "code": "AR",
+    "stationCount": 633
+  },
+  {
+    "name": "American Samoa",
+    "code": "AS",
+    "stationCount": 12
+  },
+  {
+    "name": "Austria",
+    "code": "AT",
+    "stationCount": 311
+  },
+  {
+    "name": "Australia",
+    "code": "AU",
+    "stationCount": 910
+  },
+  {
+    "name": "Aruba",
+    "code": "AW",
+    "stationCount": 8
+  },
+  {
+    "name": "Aland Islands",
+    "code": "AX",
+    "stationCount": 2
+  },
+  {
+    "name": "Azerbaijan",
+    "code": "AZ",
+    "stationCount": 28
+  },
+  {
+    "name": "Bosnia And Herzegovina",
+    "code": "BA",
+    "stationCount": 152
+  },
+  {
+    "name": "Barbados",
+    "code": "BB",
+    "stationCount": 10
+  },
+  {
+    "name": "Bangladesh",
+    "code": "BD",
+    "stationCount": 17
+  }
+]
