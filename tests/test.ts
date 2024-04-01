@@ -13,6 +13,8 @@ import JsonChecks from './fixtures/json-checks.json';
 import JsonClicks from './fixtures/json-clicks.json';
 import JsonChecksteps from './fixtures/json-checksteps.json';
 import JsonStationsChanged from './fixtures/json-stations-changed.json';
+import JsonStats from './fixtures/json-stats.json';
+import JsonConfig from './fixtures/json-config.json';
 
 // Expected
 import SearchStations from './expected/search-stations.json';
@@ -25,6 +27,8 @@ import GetStationChecks from './expected/get-station-checks.json';
 import GetStationClicks from './expected/get-station-clicks.json';
 import GetStationCheckSteps from './expected/get-station-check-steps.json';
 import GetStationOldVersion from './expected/get-station-old-version.json';
+import GetServerStats from './expected/get-server-stats.json';
+import GetServerConfig from './expected/get-server-config.json';
 
 describe('sum test', () => {
   let client: RadioBrowserClient;
@@ -51,7 +55,11 @@ describe('sum test', () => {
       .get('/json/checksteps?uuids=82b1fe45-50cb-4cd7-92db-02f42ac5d52e')
       .reply(200, JsonChecksteps)
       .get('/json/stations/changed?limit=5')
-      .reply(200, JsonStationsChanged);
+      .reply(200, JsonStationsChanged)
+      .get('/json/stats')
+      .reply(200, JsonStats)
+      .get('/json/config')
+      .reply(200, JsonConfig);
     client = new RadioBrowserClient('MyRadioApp', '0.1.0');
   });
   it('search stations', async () => {
@@ -93,5 +101,13 @@ describe('sum test', () => {
   it('get station old version', async () => {
     const data = await client.getStationOldVersion({ limit: 5 });
     expect(JSON.parse(JSON.stringify(data))).toStrictEqual(GetStationOldVersion);
+  });
+  it('get server stats', async () => {
+    const data = await client.getServerStats();
+    expect(JSON.parse(JSON.stringify(data))).toStrictEqual(GetServerStats);
+  });
+  it('get server config', async () => {
+    const data = await client.getServerConfig();
+    expect(JSON.parse(JSON.stringify(data))).toStrictEqual(GetServerConfig);
   });
 });

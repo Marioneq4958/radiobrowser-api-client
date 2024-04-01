@@ -1,0 +1,27 @@
+{
+  "checkEnabled": true,
+  "prometheusExporterEnabled": true,
+  "pullServers": [
+    "http://nl1.api.radio-browser.info",
+    "http://at1.api.radio-browser.info"
+  ],
+  "tcpTimeoutSeconds": 10,
+  "brokenStationsNeverWorkingTimeoutSeconds": 172800,
+  "brokenStationsTimeoutSeconds": 432000,
+  "checksTimeoutSeconds": 259200,
+  "clickValidTimeoutSeconds": 86400,
+  "clicksTimeoutSeconds": 259200,
+  "mirrorPullIntervalSeconds": 300,
+  "updateCachesIntervalSeconds": 300,
+  "serverName": "de1.api.radio-browser.info",
+  "serverLocation": "netcup.de",
+  "serverCountryCode": "DE",
+  "checkRetries": 5,
+  "checkBatchsize": 100,
+  "checkPauseSeconds": 60,
+  "apiThreads": 5,
+  "cacheType": "redis",
+  "cacheTtl": 60,
+  "languageReplaceFilepath": "https://radiobrowser.gitlab.io/radiobrowser-static-data/language-replace.csv",
+  "languageToCodeFilepath": "/etc/radiobrowser/language-to-code.csv"
+}
