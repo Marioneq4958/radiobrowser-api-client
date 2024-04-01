@@ -9,6 +9,7 @@ import JsonCountries from './fixtures/json-countries.json';
 import JsonStates from './fixtures/json-states.json';
 import JsonLanguages from './fixtures/json-languages.json';
 import JsonTags from './fixtures/json-tags.json';
+import JsonChecks from './fixtures/json-checks.json';
 
 // Expected
 import SearchStations from './expected/search-stations.json';
@@ -17,6 +18,7 @@ import GetCountires from './expected/get-countries.json';
 import GetStates from './expected/get-states.json';
 import GetLanguages from './expected/get-languages.json';
 import GetTags from './expected/get-tags.json';
+import GetStationChecks from './expected/get-station-checks.json';
 
 describe('sum test', () => {
   let client: RadioBrowserClient;
@@ -35,7 +37,9 @@ describe('sum test', () => {
       .get('/json/languages/?limit=20')
       .reply(200, JsonLanguages)
       .get('/json/tags/?limit=20')
-      .reply(200, JsonTags);
+      .reply(200, JsonTags)
+      .get('/json/checks?limit=3')
+      .reply(200, JsonChecks);
     client = new RadioBrowserClient('MyRadioApp', '0.1.0');
   });
   it('search stations', async () => {
@@ -61,5 +65,9 @@ describe('sum test', () => {
   it('get tags', async () => {
     const data = await client.getTags({ limit: 20 });
     expect(JSON.parse(JSON.stringify(data))).toStrictEqual(GetTags);
+  });
+  it('get station checks', async () => {
+    const data = await client.getStationChecks({ limit: 3 });
+    expect(JSON.parse(JSON.stringify(data))).toStrictEqual(GetStationChecks);
   });
 });
