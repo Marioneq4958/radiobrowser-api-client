@@ -8,6 +8,9 @@ export class Station {
   @JsonProperty({ name: 'stationuuid' })
   public stationUUID: string;
 
+  @JsonProperty({ name: 'serveruuid' })
+  public serverUUID: string;
+
   @JsonProperty()
   public name: string;
 
