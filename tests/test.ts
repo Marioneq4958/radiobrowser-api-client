@@ -12,6 +12,7 @@ import JsonTags from './fixtures/json-tags.json';
 import JsonChecks from './fixtures/json-checks.json';
 import JsonClicks from './fixtures/json-clicks.json';
 import JsonChecksteps from './fixtures/json-checksteps.json';
+import JsonStationsChanged from './fixtures/json-stations-changed.json';
 
 // Expected
 import SearchStations from './expected/search-stations.json';
@@ -23,6 +24,7 @@ import GetTags from './expected/get-tags.json';
 import GetStationChecks from './expected/get-station-checks.json';
 import GetStationClicks from './expected/get-station-clicks.json';
 import GetStationCheckSteps from './expected/get-station-check-steps.json';
+import GetStationOldVersion from './expected/get-station-old-version.json';
 
 describe('sum test', () => {
   let client: RadioBrowserClient;
@@ -47,7 +49,9 @@ describe('sum test', () => {
       .get('/json/clicks?seconds=5')
       .reply(200, JsonClicks)
       .get('/json/checksteps?uuids=82b1fe45-50cb-4cd7-92db-02f42ac5d52e')
-      .reply(200, JsonChecksteps);
+      .reply(200, JsonChecksteps)
+      .get('/json/stations/changed?limit=5')
+      .reply(200, JsonStationsChanged);
     client = new RadioBrowserClient('MyRadioApp', '0.1.0');
   });
   it('search stations', async () => {
@@ -85,5 +89,9 @@ describe('sum test', () => {
   it('get station check steps', async () => {
     const data = await client.getStationCheckSteps({ UUIDs: ['82b1fe45-50cb-4cd7-92db-02f42ac5d52e'] });
     expect(JSON.parse(JSON.stringify(data))).toStrictEqual(GetStationCheckSteps);
+  });
+  it('get station old version', async () => {
+    const data = await client.getStationOldVersion({ limit: 5 });
+    expect(JSON.parse(JSON.stringify(data))).toStrictEqual(GetStationOldVersion);
   });
 });

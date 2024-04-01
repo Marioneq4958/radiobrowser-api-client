@@ -374,7 +374,7 @@ export class StationOldVersion {
   @JsonProperty({ name: 'favicon' })
   public faviconUrl: string | null;
 
-  @JsonProperty({ name: 'tags', beforeDeserialize: (value: string) => (value !== '' ? value.split(',') : []) })
+  @JsonProperty({ beforeDeserialize: (value: string) => (value !== '' ? value.split(',') : []) })
   public tags: string[];
 
   @JsonProperty({ name: 'country' })
