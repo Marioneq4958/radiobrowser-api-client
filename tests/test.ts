@@ -30,7 +30,7 @@ import GetStationOldVersion from './expected/get-station-old-version.json';
 import GetServerStats from './expected/get-server-stats.json';
 import GetServerConfig from './expected/get-server-config.json';
 
-describe('sum test', () => {
+describe('main test', () => {
   let client: RadioBrowserClient;
 
   beforeEach(() => {
