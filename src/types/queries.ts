@@ -244,7 +244,7 @@ export class IStationClicks {
 
 @JsonObject()
 export class IStationCheckSteps {
-  @JsonProperty({ name: 'uuids', beforeSerialize: (value: string) => value.split(',') })
+  @JsonProperty({ name: 'uuids' })
   public UUIDs: string[];
 
   constructor(data: IStationCheckSteps) {

@@ -1,0 +1,56 @@
+[
+  {
+    "stepUUID": "c1622f5d-2b40-4598-b18f-66cf7315586e",
+    "parentStepUUID": null,
+    "checkUUID": "9c58d97b-f431-4d2e-8440-501d08bb317c",
+    "stationUUID": "82b1fe45-50cb-4cd7-92db-02f42ac5d52e",
+    "url": "http://stream.zeno.fm/ke2bvwydmzzuv",
+    "urlType": "REDIRECT",
+    "error": null
+  },
+  {
+    "stepUUID": "489c7685-2beb-4fe8-a595-714132d90bd7",
+    "parentStepUUID": "c1622f5d-2b40-4598-b18f-66cf7315586e",
+    "checkUUID": "9c58d97b-f431-4d2e-8440-501d08bb317c",
+    "stationUUID": "82b1fe45-50cb-4cd7-92db-02f42ac5d52e",
+    "url": "http://stream-154.zeno.fm/ke2bvwydmzzuv?zs=iYxv-lG0TKeUZ_MXPGaORQ",
+    "urlType": "STREAM",
+    "error": null
+  },
+  {
+    "stepUUID": "518dad80-af82-4afc-af5e-7df77cbd51e3",
+    "parentStepUUID": null,
+    "checkUUID": "71ff8768-511f-4a4b-a32a-75c3a17a5e4d",
+    "stationUUID": "82b1fe45-50cb-4cd7-92db-02f42ac5d52e",
+    "url": "http://stream.zeno.fm/ke2bvwydmzzuv",
+    "urlType": "REDIRECT",
+    "error": null
+  },
+  {
+    "stepUUID": "f0389fbd-441a-479a-b87e-fbd79f55a6f8",
+    "parentStepUUID": "518dad80-af82-4afc-af5e-7df77cbd51e3",
+    "checkUUID": "71ff8768-511f-4a4b-a32a-75c3a17a5e4d",
+    "stationUUID": "82b1fe45-50cb-4cd7-92db-02f42ac5d52e",
+    "url": "http://stream-154.zeno.fm/ke2bvwydmzzuv?zs=DQL8tD8yQhKU7bUD9X6vWQ",
+    "urlType": "STREAM",
+    "error": null
+  },
+  {
+    "stepUUID": "ff782c73-a3c4-494a-9607-ad4a2f94faa2",
+    "parentStepUUID": null,
+    "checkUUID": "a9c3199f-e56e-41aa-8351-ee6d1b7843df",
+    "stationUUID": "82b1fe45-50cb-4cd7-92db-02f42ac5d52e",
+    "url": "http://stream.zeno.fm/ke2bvwydmzzuv",
+    "urlType": "REDIRECT",
+    "error": null
+  },
+  {
+    "stepUUID": "d6f92eaf-752c-44ce-829d-b541736c2ba2",
+    "parentStepUUID": "ff782c73-a3c4-494a-9607-ad4a2f94faa2",
+    "checkUUID": "a9c3199f-e56e-41aa-8351-ee6d1b7843df",
+    "stationUUID": "82b1fe45-50cb-4cd7-92db-02f42ac5d52e",
+    "url": "http://stream-154.zeno.fm/ke2bvwydmzzuv?zs=UbKnxHocQ9OMnQQv-GBKiA",
+    "urlType": "STREAM",
+    "error": null
+  }
+]

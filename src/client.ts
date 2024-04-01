@@ -54,6 +54,9 @@ export class RadioBrowserClient {
     }
     const response = await this.axios.get<T>(`/${outputFormat}/${endpoint}`, {
       params,
+      paramsSerializer: {
+        indexes: null,
+      },
     });
     return response;
   }
@@ -67,8 +70,7 @@ export class RadioBrowserClient {
     const data = await this.fetchStations(params);
     return this.jsonSerializer.deserialize(JSON.parse(data), Station) as Station[];
   }
-
-  public async fetchStationsByUUIDs(params: { stationUUIDs: string[] }, outputFormat: StationsListOutputFormat = 'json'): Promise<string> {
+  async fetchStationsByUUIDs(params: { stationUUIDs: string[] }, outputFormat: StationsListOutputFormat = 'json'): Promise<string> {
     const { data } = await this.sendRequest<string>('stations/byuuid', outputFormat, { uuids: params.stationUUIDs.join(',') });
     return data;
   }
