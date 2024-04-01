@@ -15,6 +15,8 @@ import JsonChecksteps from './fixtures/json-checksteps.json';
 import JsonStationsChanged from './fixtures/json-stations-changed.json';
 import JsonStats from './fixtures/json-stats.json';
 import JsonConfig from './fixtures/json-config.json';
+import JsonUrl from './fixtures/json-url.json';
+import JsonVote from './fixtures/json-vote.json';
 
 // Expected
 import SearchStations from './expected/search-stations.json';
@@ -59,7 +61,11 @@ describe('main test', () => {
       .get('/json/stats')
       .reply(200, JsonStats)
       .get('/json/config')
-      .reply(200, JsonConfig);
+      .reply(200, JsonConfig)
+      .get('/json/url/82b1fe45-50cb-4cd7-92db-02f42ac5d52e')
+      .reply(200, JsonUrl)
+      .get('/json/vote/82b1fe45-50cb-4cd7-92db-02f42ac5d52e')
+      .reply(200, JsonVote);
     client = new RadioBrowserClient('MyRadioApp', '0.1.0');
   });
   it('search stations', async () => {
@@ -109,5 +115,11 @@ describe('main test', () => {
   it('get server config', async () => {
     const data = await client.getServerConfig();
     expect(JSON.parse(JSON.stringify(data))).toStrictEqual(GetServerConfig);
+  });
+  it('click', async () => {
+    await client.click('82b1fe45-50cb-4cd7-92db-02f42ac5d52e');
+  });
+  it('vote for station', async () => {
+    await client.voteForStation('82b1fe45-50cb-4cd7-92db-02f42ac5d52e');
   });
 });
