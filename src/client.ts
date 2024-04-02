@@ -364,7 +364,7 @@ export class RadioBrowserClient {
     return data;
   }
 
-   /**
+  /**
    * Fetches and parses old versions of station from the Radio Browser API.
    * @param params - The search parameters
    * @see {@link https://de1.api.radio-browser.info/#Old_versions_of_stations} for more information on the API endpoint
@@ -375,7 +375,7 @@ export class RadioBrowserClient {
     return this.jsonSerializer.deserialize(JSON.parse(data), StationOldVersion) as StationOldVersion[];
   }
 
-   /**
+  /**
    * Fetches server stats from the Radio Browser API.
    * @param outputFormat - The output format for the server stats (default is JSON)
    * @see {@link https://de1.api.radio-browser.info/#Server_stats} for more information on the API endpoint
@@ -386,7 +386,7 @@ export class RadioBrowserClient {
     return data;
   }
 
-   /**
+  /**
    * Fetches and parses server stats from the Radio Browser API.
    * @see {@link https://de1.api.radio-browser.info/#Server_stats} for more information on the API endpoint
    * @returns A promise that resolves to the server stats
