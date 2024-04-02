@@ -57,7 +57,7 @@ export class RadioBrowserClient {
     return response;
   }
 
-  public async fetchServers(outputFormat: StationsListOutputFormat = 'json') {
+  public async fetchServers(outputFormat: StationsListOutputFormat = 'json'): Promise<string> {
     const { data } = await this.sendRequest<string>(
       'servers',
       outputFormat,
