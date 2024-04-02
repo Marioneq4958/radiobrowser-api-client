@@ -1,6 +1,15 @@
 import { JsonProperty, JsonObject } from 'typescript-json-serializer';
 
 @JsonObject()
+export class Server {
+  @JsonProperty()
+  public name: string;
+
+  @JsonProperty()
+  public ip: string;
+}
+
+@JsonObject()
 export class Station {
   @JsonProperty({ name: 'changeuuid' })
   public changeUUID: string;
