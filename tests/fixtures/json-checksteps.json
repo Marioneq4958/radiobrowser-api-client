@@ -1,0 +1,62 @@
+[
+  {
+    "stepuuid": "c1622f5d-2b40-4598-b18f-66cf7315586e",
+    "parent_stepuuid": null,
+    "checkuuid": "9c58d97b-f431-4d2e-8440-501d08bb317c",
+    "stationuuid": "82b1fe45-50cb-4cd7-92db-02f42ac5d52e",
+    "url": "http://stream.zeno.fm/ke2bvwydmzzuv",
+    "urltype": "REDIRECT",
+    "error": null,
+    "creation_iso8601": "2024-03-30T03:39:59Z"
+  },
+  {
+    "stepuuid": "489c7685-2beb-4fe8-a595-714132d90bd7",
+    "parent_stepuuid": "c1622f5d-2b40-4598-b18f-66cf7315586e",
+    "checkuuid": "9c58d97b-f431-4d2e-8440-501d08bb317c",
+    "stationuuid": "82b1fe45-50cb-4cd7-92db-02f42ac5d52e",
+    "url": "http://stream-154.zeno.fm/ke2bvwydmzzuv?zs=iYxv-lG0TKeUZ_MXPGaORQ",
+    "urltype": "STREAM",
+    "error": null,
+    "creation_iso8601": "2024-03-30T03:39:59Z"
+  },
+  {
+    "stepuuid": "518dad80-af82-4afc-af5e-7df77cbd51e3",
+    "parent_stepuuid": null,
+    "checkuuid": "71ff8768-511f-4a4b-a32a-75c3a17a5e4d",
+    "stationuuid": "82b1fe45-50cb-4cd7-92db-02f42ac5d52e",
+    "url": "http://stream.zeno.fm/ke2bvwydmzzuv",
+    "urltype": "REDIRECT",
+    "error": null,
+    "creation_iso8601": "2024-03-31T03:42:38Z"
+  },
+  {
+    "stepuuid": "f0389fbd-441a-479a-b87e-fbd79f55a6f8",
+    "parent_stepuuid": "518dad80-af82-4afc-af5e-7df77cbd51e3",
+    "checkuuid": "71ff8768-511f-4a4b-a32a-75c3a17a5e4d",
+    "stationuuid": "82b1fe45-50cb-4cd7-92db-02f42ac5d52e",
+    "url": "http://stream-154.zeno.fm/ke2bvwydmzzuv?zs=DQL8tD8yQhKU7bUD9X6vWQ",
+    "urltype": "STREAM",
+    "error": null,
+    "creation_iso8601": "2024-03-31T03:42:38Z"
+  },
+  {
+    "stepuuid": "ff782c73-a3c4-494a-9607-ad4a2f94faa2",
+    "parent_stepuuid": null,
+    "checkuuid": "a9c3199f-e56e-41aa-8351-ee6d1b7843df",
+    "stationuuid": "82b1fe45-50cb-4cd7-92db-02f42ac5d52e",
+    "url": "http://stream.zeno.fm/ke2bvwydmzzuv",
+    "urltype": "REDIRECT",
+    "error": null,
+    "creation_iso8601": "2024-04-01T03:49:32Z"
+  },
+  {
+    "stepuuid": "d6f92eaf-752c-44ce-829d-b541736c2ba2",
+    "parent_stepuuid": "ff782c73-a3c4-494a-9607-ad4a2f94faa2",
+    "checkuuid": "a9c3199f-e56e-41aa-8351-ee6d1b7843df",
+    "stationuuid": "82b1fe45-50cb-4cd7-92db-02f42ac5d52e",
+    "url": "http://stream-154.zeno.fm/ke2bvwydmzzuv?zs=UbKnxHocQ9OMnQQv-GBKiA",
+    "urltype": "STREAM",
+    "error": null,
+    "creation_iso8601": "2024-04-01T03:49:32Z"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "stationuuid": "9619ea14-0601-11e8-ae97-52543be04c81",
+    "clickuuid": "be8fb731-f053-11ee-8eac-c6fe4ca78941",
+    "clicktimestamp_iso8601": "2024-04-01T18:14:55Z",
+    "clicktimestamp": "2024-04-01 18:14:55"
+  },
+  {
+    "stationuuid": "5960e930-3864-4963-990a-17b79ea4f410",
+    "clickuuid": "bf1d2ffa-f053-11ee-8eac-c6fe4ca78941",
+    "clicktimestamp_iso8601": "2024-04-01T18:14:56Z",
+    "clicktimestamp": "2024-04-01 18:14:56"
+  },
+  {
+    "stationuuid": "9195ec3b-48d6-11e9-80ab-52543be04c81",
+    "clickuuid": "bf2d5668-f053-11ee-8eac-c6fe4ca78941",
+    "clicktimestamp_iso8601": "2024-04-01T18:14:56Z",
+    "clicktimestamp": "2024-04-01 18:14:56"
+  },
+  {
+    "stationuuid": "273c4a22-5a4a-11e8-b0ce-52543be04c81",
+    "clickuuid": "bfbfc7d1-f053-11ee-8eac-c6fe4ca78941",
+    "clicktimestamp_iso8601": "2024-04-01T18:14:57Z",
+    "clicktimestamp": "2024-04-01 18:14:57"
+  }
+]

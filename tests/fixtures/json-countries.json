@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Andorra",
+    "iso_3166_1": "AD",
+    "stationcount": 12
+  },
+  {
+    "name": "The United Arab Emirates",
+    "iso_3166_1": "AE",
+    "stationcount": 520
+  },
+  {
+    "name": "Afghanistan",
+    "iso_3166_1": "AF",
+    "stationcount": 175
+  },
+  {
+    "name": "Antigua And Barbuda",
+    "iso_3166_1": "AG",
+    "stationcount": 8
+  },
+  {
+    "name": "Anguilla",
+    "iso_3166_1": "AI",
+    "stationcount": 4
+  },
+  {
+    "name": "Albania",
+    "iso_3166_1": "AL",
+    "stationcount": 47
+  },
+  {
+    "name": "Armenia",
+    "iso_3166_1": "AM",
+    "stationcount": 13
+  },
+  {
+    "name": "",
+    "iso_3166_1": "AN",
+    "stationcount": 3
+  },
+  {
+    "name": "Angola",
+    "iso_3166_1": "AO",
+    "stationcount": 18
+  },
+  {
+    "name": "Antarctica",
+    "iso_3166_1": "AQ",
+    "stationcount": 7
+  },
+  {
+    "name": "Argentina",
+    "iso_3166_1": "AR",
+    "stationcount": 633
+  },
+  {
+    "name": "American Samoa",
+    "iso_3166_1": "AS",
+    "stationcount": 12
+  },
+  {
+    "name": "Austria",
+    "iso_3166_1": "AT",
+    "stationcount": 311
+  },
+  {
+    "name": "Australia",
+    "iso_3166_1": "AU",
+    "stationcount": 910
+  },
+  {
+    "name": "Aruba",
+    "iso_3166_1": "AW",
+    "stationcount": 8
+  },
+  {
+    "name": "Aland Islands",
+    "iso_3166_1": "AX",
+    "stationcount": 2
+  },
+  {
+    "name": "Azerbaijan",
+    "iso_3166_1": "AZ",
+    "stationcount": 28
+  },
+  {
+    "name": "Bosnia And Herzegovina",
+    "iso_3166_1": "BA",
+    "stationcount": 152
+  },
+  {
+    "name": "Barbados",
+    "iso_3166_1": "BB",
+    "stationcount": 10
+  },
+  {
+    "name": "Bangladesh",
+    "iso_3166_1": "BD",
+    "stationcount": 17
+  }
+]

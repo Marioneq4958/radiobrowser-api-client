@@ -8,6 +8,9 @@ export class Station {
   @JsonProperty({ name: 'stationuuid' })
   public stationUUID: string;
 
+  @JsonProperty({ name: 'serveruuid' })
+  public serverUUID: string;
+
   @JsonProperty()
   public name: string;
 
@@ -23,7 +26,7 @@ export class Station {
   @JsonProperty({ name: 'favicon' })
   public faviconUrl: string | null;
 
-  @JsonProperty({ name: 'tags', beforeDeserialize: (value: string) => value.split(',') })
+  @JsonProperty({ name: 'tags', beforeDeserialize: (value: string) => (value !== '' ? value.split(',') : []) })
   public tags: string[];
 
   @JsonProperty({ name: 'country' })
@@ -182,7 +185,7 @@ export class StationCheck {
   @JsonProperty()
   public description: string | null;
 
-  @JsonProperty({ beforeDeserialize: (value: string | null) => (value !== null ? value.split(',') : null) })
+  @JsonProperty({ beforeDeserialize: (value: string | null) => (value !== null && value !== '' ? value.split(',') : null) })
   public tags: string[] | null;
 
   @JsonProperty({ name: 'countrycode' })
@@ -209,7 +212,7 @@ export class StationCheck {
   @JsonProperty({ name: 'timing_ms' })
   public timingMs: number;
 
-  @JsonProperty({ name: 'languagecodes', beforeDeserialize: (value: string | null) => (value !== null ? value.split(',') : null) })
+  @JsonProperty({ name: 'languagecodes', beforeDeserialize: (value: string | null) => (value !== null && value !== '' ? value.split(',') : null) })
   public languageCodes: string[] | null;
 
   @JsonProperty({ name: 'ssl_error', beforeDeserialize: (value: number) => Boolean(value) })
@@ -371,7 +374,7 @@ export class StationOldVersion {
   @JsonProperty({ name: 'favicon' })
   public faviconUrl: string | null;
 
-  @JsonProperty({ name: 'tags', beforeDeserialize: (value: string) => value.split(',') })
+  @JsonProperty({ beforeDeserialize: (value: string) => (value !== '' ? value.split(',') : []) })
   public tags: string[];
 
   @JsonProperty({ name: 'country' })

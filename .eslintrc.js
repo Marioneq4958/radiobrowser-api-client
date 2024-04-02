@@ -11,6 +11,14 @@ module.exports = {
     sourceType: 'module',
     project: 'tsconfig.json',
   },
+  "overrides": [
+    {
+      "files": ["tests/**/*"],
+      "env": {
+        "jest": true
+      }
+    }
+  ],
   env: {
     es6: true,
     node: true,

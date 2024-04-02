@@ -54,6 +54,9 @@ export class RadioBrowserClient {
     }
     const response = await this.axios.get<T>(`/${outputFormat}/${endpoint}`, {
       params,
+      paramsSerializer: {
+        indexes: null,
+      },
     });
     return response;
   }
