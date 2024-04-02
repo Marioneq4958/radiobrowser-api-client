@@ -71,7 +71,7 @@ export class RadioBrowserClient {
     return this.jsonSerializer.deserialize(JSON.parse(data), Station) as Station[];
   }
 
-  async fetchStationsByUUIDs(params: { stationUUIDs: string[] }, outputFormat: StationsListOutputFormat = 'json'): Promise<string> {
+  public async fetchStationsByUUIDs(params: { stationUUIDs: string[] }, outputFormat: StationsListOutputFormat = 'json'): Promise<string> {
     const { data } = await this.sendRequest<string>('stations/byuuid', outputFormat, { uuids: params.stationUUIDs.join(',') });
     return data;
   }
