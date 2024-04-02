@@ -1,7 +1,15 @@
 {
   "name": "radiobrowser-api-client",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Client for Radio Browser API",
+  "homepage": "https://github.com/marioneq4958/radiobrowser-api-client",
+  "bugs": {
+    "url": "https://github.com/marioneq4958/radiobrowser-api-client/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marioneq4958/radiobrowser-api-client.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -9,7 +17,7 @@
     "lint": "eslint src/**/*.ts tests/**/*.ts",
     "build": "tsc"
   },
-  "keywords": [],
+  "keywords": ["radio", "radio-browser", "api", "radiobrowser"],
   "author": "marioneq4958",
   "license": "Apache-2.0",
   "dependencies": {
