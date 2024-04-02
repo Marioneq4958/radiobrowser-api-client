@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/marioneq4958/radiobrowser-api-client.git"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest",
     "lint:fix": "eslint src/**/*.ts tests/**/*.ts --fix",
