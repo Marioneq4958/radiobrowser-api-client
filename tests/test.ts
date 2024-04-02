@@ -36,7 +36,7 @@ describe('main test', () => {
   let client: RadioBrowserClient;
 
   beforeEach(() => {
-    nock('http://de1.api.radio-browser.info').get('/json/servers').reply(200, JsonServers);
+    nock('https://de1.api.radio-browser.info').get('/json/servers').reply(200, JsonServers);
     nock('https://fk1.api.radio-browser.info')
       .get('/json/stations/search?order=clickcount&reverse=true&limit=2')
       .reply(200, JsonStationsSearch)
@@ -67,6 +67,10 @@ describe('main test', () => {
       .get('/json/vote/82b1fe45-50cb-4cd7-92db-02f42ac5d52e')
       .reply(200, JsonVote);
     client = new RadioBrowserClient('MyRadioApp', '0.1.0');
+  });
+  it('get servers', async () => {
+    const data = await client.getServers();
+    expect(JSON.parse(JSON.stringify(data))).toStrictEqual(JsonServers);
   });
   it('search stations', async () => {
     const data = await client.searchStations({ limit: 2, order: 'clickcount', reverse: true });

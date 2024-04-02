@@ -3,6 +3,7 @@ import {
   Codec,
   Country,
   Language,
+  Server,
   ServerConfig,
   ServerStats,
   State,
@@ -39,26 +40,40 @@ export class RadioBrowserClient {
     this.jsonSerializer = new JsonSerializer();
   }
 
-  private async getServers() {
-    const data = JSON.parse((await this.axios.get('http://de1.api.radio-browser.info/json/servers')).data);
-    const servers = data.map((server: { name: string }) => 'https://' + server.name);
-    if (servers.length === 0) {
-      throw new Error('No servers');
+  private async sendRequest<T>(endpoint: string, outputFormat: string, params: any, baseURL?: string) {
+    if (!this.axios.defaults.baseURL && !baseURL) {
+      const servers = await this.getServers();
+      if (!servers.length) {
+        throw new Error('No servers');
+      }
+      this.setServer(servers[0].name);
     }
-    return servers;
-  }
-
-  private async sendRequest<T>(endpoint: string, outputFormat: string, params: any) {
-    if (!this.axios.defaults.baseURL) {
-      this.axios.defaults.baseURL = (await this.getServers())[0];
-    }
-    const response = await this.axios.get<T>(`/${outputFormat}/${endpoint}`, {
+    const response = await this.axios.get<T>(baseURL ? `${baseURL}/${outputFormat}/${endpoint}` : `/${outputFormat}/${endpoint}`, {
       params,
       paramsSerializer: {
         indexes: null,
       },
     });
     return response;
+  }
+
+  public async fetchServers(outputFormat: StationsListOutputFormat = 'json') {
+    const { data } = await this.sendRequest<string>(
+      'servers',
+      outputFormat,
+      {},
+      !this.axios.defaults.baseURL ? 'https://de1.api.radio-browser.info' : undefined,
+    );
+    return data;
+  }
+
+  public async getServers(): Promise<Server[]> {
+    const data = await this.fetchServers();
+    return this.jsonSerializer.deserialize(JSON.parse(data), Server) as Server[];
+  }
+
+  public setServer(serverName: string): void {
+    this.axios.defaults.baseURL = `https://${serverName}`;
   }
 
   public async fetchStations(params: ISearchStation, outputFormat: StationsListOutputFormat = 'json'): Promise<string> {
