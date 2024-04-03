@@ -16,6 +16,9 @@ module.exports = {
       "files": ["tests/**/*"],
       "env": {
         "jest": true
+      },
+      parserOptions: {
+        project: './tsconfig.tests.json'
       }
     }
   ],
