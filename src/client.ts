@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import { Axios, AxiosInstance } from 'axios';
 import {
   Codec,
   Country,
@@ -28,6 +28,7 @@ import {
 } from './types/queries';
 import { ListOutputFormat, ObjectOutputFromat, StationsListOutputFormat } from './types/formats';
 import { JsonSerializer } from 'typescript-json-serializer';
+import axiosRetry from 'axios-retry';
 
 export class RadioBrowserClient {
   private readonly axios: Axios;
@@ -42,6 +43,7 @@ export class RadioBrowserClient {
     this.axios = new Axios({
       headers: { 'User-Agent': `${appName}/${appVersion}` },
     });
+    axiosRetry(this.axios as AxiosInstance, { retries: 3, retryDelay: (retryCount) => retryCount * 100 });
     this.jsonSerializer = new JsonSerializer();
   }
 
