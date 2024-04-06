@@ -44,7 +44,7 @@ export class RadioBrowserClient {
       headers: { 'User-Agent': `${appName}/${appVersion}` },
       transformResponse: [(data) => data],
     });
-    axiosRetry(this.axios as AxiosInstance, { retries: 3, retryDelay: (retryCount) => retryCount * 100 });
+    axiosRetry(this.axios, { retries: 3, retryDelay: (retryCount) => retryCount * 100 });
     this.jsonSerializer = new JsonSerializer();
   }
 
