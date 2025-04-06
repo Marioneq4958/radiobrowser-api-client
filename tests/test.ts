@@ -36,7 +36,7 @@ describe('main test', () => {
   let client: RadioBrowserClient;
 
   beforeEach(() => {
-    nock('https://de1.api.radio-browser.info').get('/json/servers').reply(200, JsonServers);
+    nock('https://all.api.radio-browser.info').get('/json/servers').reply(200, JsonServers);
     nock('https://fk1.api.radio-browser.info')
       .get('/json/stations/search?order=clickcount&reverse=true&limit=2')
       .reply(200, JsonStationsSearch)
