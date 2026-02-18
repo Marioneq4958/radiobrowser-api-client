@@ -39,9 +39,9 @@ export class RadioBrowserClient {
    * @param appName - Name of your application
    * @param appVersion - Version of your application
    */
-  constructor(appName: string, appVersion: string) {
+  constructor(appName?: string, appVersion?: string) {
     this.axios = axios.create({
-      headers: { 'User-Agent': `${appName}/${appVersion}` },
+      headers: appName && appVersion ? { 'User-Agent': `${appName}/${appVersion}` } : {},
       transformResponse: [(data) => data],
     });
     axiosRetry(this.axios, { retries: 3, retryDelay: (retryCount) => retryCount * 1000 });
