@@ -4,6 +4,10 @@ on:
   release:
     types: [published]
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   publish:
     name: Bulid and publish
@@ -29,5 +33,3 @@ jobs:
 
       - name: Publish
         run: pnpm publish --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
